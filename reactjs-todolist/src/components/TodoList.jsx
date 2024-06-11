@@ -11,7 +11,9 @@ const TodoList = (props) => {
       For each todo, render a TodoCard component with a key of todoIndex and the todo text */}
       {todos.map((todo, todoIndex) => {
         return (
-          <TodoCard key={todoIndex}>
+          // todoIndex passes the index of each todo item from the todos array as a prop
+          // which is used in the TodoCard component
+          <TodoCard {...props} key={todoIndex} index={todoIndex}>
             <p>{todo}</p>
           </TodoCard>
         );

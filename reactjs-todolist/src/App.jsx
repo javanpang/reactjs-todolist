@@ -12,10 +12,20 @@ function App() {
     setTodos(newTodoList);
   }
 
+  // Define the handleDeleteTodo function to remove a todo from the todos list based on the index.
+  function handleDeleteTodo(index) {
+    // Create a new array newTodoList by filtering out the todo item at the specified index.
+    const newTodoList = todos.filter((todo, todoIndex) => {
+      return todoIndex !== index;
+    });
+    // Update the todos state with the new filtered array.
+    setTodos(newTodoList);
+  }
+
   return (
     <>
       <TodoInput handleAddTodos={handleAddTodos} />
-      <TodoList todos={todos} />
+      <TodoList handleDeleteTodo={handleDeleteTodo} todos={todos} />
     </>
   );
 }
