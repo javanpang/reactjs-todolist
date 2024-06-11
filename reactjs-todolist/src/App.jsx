@@ -3,8 +3,9 @@ import TodoInput from "./components/TodoInput";
 import TodoList from "./components/TodoList";
 
 function App() {
-  // Initialise the todos state as an empty array
+  // Initialise the todos and todoValue states as an empty array
   const [todos, setTodos] = useState([]);
+  const [todoValue, setTodoValue] = useState("");
 
   // Define the handleAddTodos function to update the todos state by adding a new todo.
   function handleAddTodos(newTodo) {
@@ -22,10 +23,27 @@ function App() {
     setTodos(newTodoList);
   }
 
+  // Define the handleEditTodo function which sets todoValue to the todo at the specified index
+  // and deletes it from todos
+  function handleEditTodo(index) {
+    const valueToBeEdited = todos[index];
+    setTodoValue(valueToBeEdited);
+    handleDeleteTodo(index);
+  }
+
+  // Render TodoInput component to add todos and TodoList component to display todos
   return (
     <>
-      <TodoInput handleAddTodos={handleAddTodos} />
-      <TodoList handleDeleteTodo={handleDeleteTodo} todos={todos} />
+      <TodoInput
+        todoValue={todoValue}
+        setTodoValue={setTodoValue}
+        handleAddTodos={handleAddTodos}
+      />
+      <TodoList
+        handleEditTodo={handleEditTodo}
+        handleDeleteTodo={handleDeleteTodo}
+        todos={todos}
+      />
     </>
   );
 }

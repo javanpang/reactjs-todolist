@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 
 const TodoInput = (props) => {
-  // Destructure handleAddTodos from props
-  const { handleAddTodos } = props;
-
-  // Initialise todoValue state using useState hook
-  const [todoValue, setTodoValue] = useState("");
+  // Destructure handleAddTodos, todoValue and setTodoValue from props
+  const { handleAddTodos, todoValue, setTodoValue } = props;
 
   return (
     <header>
